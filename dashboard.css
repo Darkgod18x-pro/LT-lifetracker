@@ -5058,6 +5058,230 @@ body.dark-mode .profile{
 
 /* NAVIGATION */
 
+/* =========================================
+   RESPONSIVE: MOBILE (Android) & TABLET ADJUSTMENTS
+   - Makes sidebar compact on tablet and collapses into a top bar on small screens
+   - Increases touch targets and refines shadows/borders for a premium finish
+   - Keeps desktop styles intact and only overrides where needed
+   ========================================= */
+
+/* Gentle tablet compaction */
+@media (max-width: 900px) {
+
+    .sidebar {
+        width: 72px; /* compact sidebar */
+        padding: 18px 10px;
+        overflow: visible;
+    }
+
+    .logo-box {
+        width: 44px;
+        height: 44px;
+        border-radius: 12px;
+        font-size: 16px;
+        box-shadow: 0 12px 34px rgba(23,97,223,0.28);
+    }
+
+    .logo-text {
+        display: none; /* hide text to save space */
+    }
+
+    .navigation {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        margin-top: 18px;
+    }
+
+    .nav-item {
+        min-height: 48px;
+        padding: 0 12px;
+        border-radius: 12px;
+        font-size: 13px;
+    }
+
+    .nav-text {
+        display: none; /* show icons only on compact sidebar */
+    }
+
+    .main-content {
+        width: calc(100% - 72px);
+        margin-left: 72px;
+    }
+
+    .topbar {
+        padding: 16px 20px;
+        min-height: 84px;
+        gap: 16px;
+    }
+
+    /* Improve card look on tablet */
+    .page-card,
+    .panel,
+    .analytics-card,
+    .completion-chart {
+        border-radius: 14px;
+        box-shadow: 0 18px 48px rgba(23,97,223,0.08);
+    }
+
+    /* Touch-friendly controls */
+    .primary-button,
+    .secondary-button,
+    .theme-button {
+        padding: 10px 16px;
+        font-size: 14px;
+        border-radius: 12px;
+    }
+
+}
+
+/* Phone / Android view: full-width top nav, touch-first spacing, premium finishes */
+@media (max-width: 600px) {
+
+    /* Collapse sidebar into a top horizontal bar */
+    .sidebar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        width: 100%;
+        height: auto;
+        min-height: unset;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        padding: 10px 14px;
+        z-index: 220;
+        border-right: none;
+        border-bottom: 1px solid var(--border);
+        background: linear-gradient(180deg, var(--surface), rgba(255,255,255,0.96));
+        box-shadow: 0 8px 36px rgba(13,27,48,0.08);
+        overflow: auto;
+    }
+
+    .sidebar::before,
+    .sidebar::after {
+        display: none; /* decorative circles not needed on small screens */
+    }
+
+    .logo-box {
+        width: 44px;
+        height: 44px;
+        border-radius: 12px;
+        font-size: 16px;
+    }
+
+    .logo-text {
+        display: none;
+    }
+
+    /* Make nav a horizontal scroller for quick access */
+    .navigation {
+        display: flex;
+        flex-direction: row;
+        gap: 8px;
+        margin-top: 0;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .nav-item {
+        min-height: 44px;
+        padding: 8px 10px;
+        border-radius: 10px;
+        white-space: nowrap;
+        font-weight: 700;
+        font-size: 14px;
+    }
+
+    .nav-text {
+        display: inline-block; /* show text beside icons in scroller */
+    }
+
+    .nav-icon {
+        margin-right: 8px;
+    }
+
+    /* Main content flows under the top bar */
+    .main-content {
+        width: 100%;
+        margin-left: 0;
+        margin-top: 72px; /* enough space for collapsed topbar */
+        padding: 12px 14px 20px 14px;
+    }
+
+    /* Reduce topbar weight to keep more vertical space for content */
+    .topbar {
+        position: relative;
+        padding: 12px 12px;
+        min-height: 56px;
+        gap: 10px;
+        background: transparent;
+        box-shadow: none;
+        border-bottom: none;
+    }
+
+    /* Larger, touch-friendly buttons with premium shadow */
+    .primary-button,
+    .secondary-button,
+    .theme-button {
+        padding: 12px 18px;
+        font-size: 15px;
+        border-radius: 14px;
+        box-shadow: 0 10px 30px rgba(23,97,223,0.12);
+    }
+
+    /* Cards: comfortable padding and soft shadow */
+    .page-card,
+    .panel,
+    .analytics-card,
+    .completion-chart {
+        margin: 8px 0;
+        padding: 14px;
+        border-radius: 14px;
+        box-shadow: 0 18px 48px rgba(23,97,223,0.06);
+        border: 1px solid rgba(0,0,0,0.04);
+    }
+
+    /* Increase default tap target sizes */
+    button,
+    .nav-item,
+    .primary-button,
+    .secondary-button {
+        touch-action: manipulation;
+        -webkit-tap-highlight-color: rgba(0,0,0,0);
+    }
+
+    /* Improve typography for mobile */
+    body {
+        font-size: 15px;
+        line-height: 1.35;
+    }
+
+    /* Make charts and visuals scale responsively */
+    .chart-shell,
+    .completion-chart,
+    .hero-visual {
+        width: 100%;
+        height: auto;
+    }
+
+}
+
+/* Very small devices: fine-tune spacing */
+@media (max-width: 420px) {
+
+    .main-content { margin-top: 64px; padding: 8px 12px 16px 12px; }
+    .nav-item { padding: 8px 10px; font-size: 13px; }
+    .logo-box { width: 40px; height: 40px; }
+    .primary-button, .secondary-button { padding: 10px 14px; font-size: 14px; }
+
+}
+
+/* End of responsive overrides */
+
+
 body.dark-mode .nav-item{
     color:
         #aebed5;
