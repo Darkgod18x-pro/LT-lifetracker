@@ -1,0 +1,1149 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>LifeTrack Dashboard</title>
+
+
+    <!-- MAIN CSS -->
+
+    <link
+        rel="stylesheet"
+        href="dashboard.css"
+    >
+
+
+    <!-- CHART.JS -->
+
+    <script
+        src="https://cdn.jsdelivr.net/npm/chart.js"
+    ></script>
+
+</head>
+
+
+<body>
+
+
+<div class="app">
+
+
+<!-- =====================================
+     SIDEBAR
+===================================== -->
+
+<aside class="sidebar">
+
+
+    <!-- LOGO -->
+
+    <div class="logo">
+
+
+        <div class="logo-box">
+
+            LT
+
+        </div>
+
+
+        <div class="logo-text">
+
+
+            <h2>
+
+                LifeTrack
+
+            </h2>
+
+
+            <p>
+
+                Build your life.
+
+            </p>
+
+
+        </div>
+
+
+    </div>
+
+
+
+    <!-- NAVIGATION -->
+
+    <nav class="navigation">
+
+
+        <button
+            type="button"
+            class="nav-item active"
+            data-section="dashboard"
+        >
+
+
+            <span class="nav-icon">
+
+                📊
+
+            </span>
+
+
+            <span class="nav-text">
+
+                Dashboard
+
+            </span>
+
+
+        </button>
+
+
+
+        <button
+            type="button"
+            class="nav-item"
+            data-section="habits"
+        >
+
+
+            <span class="nav-icon">
+
+                ✓
+
+            </span>
+
+
+            <span class="nav-text">
+
+                Habits
+
+            </span>
+
+
+        </button>
+
+
+
+        <button
+            type="button"
+            class="nav-item"
+            data-section="goals"
+        >
+
+
+            <span class="nav-icon">
+
+                🎯
+
+            </span>
+
+
+            <span class="nav-text">
+
+                Goals
+
+            </span>
+
+
+        </button>
+
+
+
+        <button
+            type="button"
+            class="nav-item"
+            data-section="analytics"
+        >
+
+
+            <span class="nav-icon">
+
+                📈
+
+            </span>
+
+
+            <span class="nav-text">
+
+                Analytics
+
+            </span>
+
+
+        </button>
+
+
+    </nav>
+
+
+
+    <!-- SIDEBAR BOTTOM -->
+
+    <div class="sidebar-bottom">
+
+
+        <div class="quote-box">
+
+
+            <small>
+
+                DAILY REMINDER
+
+            </small>
+
+
+            <p>
+
+                Small actions.
+
+                <br>
+
+                Compounded daily.
+
+            </p>
+
+        </div>
+
+
+
+        <button
+            type="button"
+            id="themeToggle"
+            class="theme-button"
+        >
+
+
+            <span class="nav-icon">
+
+                🌙
+
+            </span>
+
+
+            <span class="nav-text">
+
+                Dark Mode
+
+            </span>
+
+
+        </button>
+
+
+    </div>
+
+
+</aside>
+
+
+
+<!-- =====================================
+     MAIN CONTENT
+===================================== -->
+
+<main class="main-content">
+
+
+<!-- =====================================
+     TOP BAR
+===================================== -->
+
+<header class="topbar">
+
+
+    <div>
+
+
+        <span class="eyebrow">
+
+            PERSONAL DEVELOPMENT SYSTEM
+
+        </span>
+
+
+        <h1 id="pageTitle">
+
+            Progress
+
+        </h1>
+
+
+    </div>
+
+
+
+    <div class="top-actions">
+
+
+        <!-- MONTH -->
+
+        <select
+            id="monthSelect"
+            aria-label="Select month"
+        >
+
+
+            <option>January</option>
+
+            <option>February</option>
+
+            <option>March</option>
+
+            <option>April</option>
+
+            <option>May</option>
+
+            <option>June</option>
+
+            <option>July</option>
+
+            <option>August</option>
+
+            <option>September</option>
+
+            <option>October</option>
+
+            <option>November</option>
+
+            <option>December</option>
+
+
+        </select>
+
+
+
+        <!-- YEAR -->
+
+        <select
+            id="yearSelect"
+            aria-label="Select year"
+        >
+
+
+            <option value="2025">
+
+                2025
+
+            </option>
+
+
+            <option value="2026">
+
+                2026
+
+            </option>
+
+
+            <option value="2027">
+
+                2027
+
+            </option>
+
+
+            <option value="2028">
+
+                2028
+
+            </option>
+
+
+        </select>
+
+
+
+        <!-- USER -->
+
+        <div class="user-info">
+
+
+            <div
+                id="userName"
+                class="user-name"
+            >
+
+                User
+
+            </div>
+
+
+            <div
+                id="profileLetter"
+                class="profile"
+            >
+
+                U
+
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+
+</header>
+
+
+
+<!-- =====================================
+     DASHBOARD PAGE
+===================================== -->
+
+<section
+    id="dashboard"
+    class="section active-section"
+>
+
+
+<div class="dashboard-hero">
+
+    <div class="hero-copy">
+
+        <span class="eyebrow">
+
+            VISUAL SUMMARY
+
+        </span>
+
+
+        <h2>
+
+            Daily focus at a glance
+
+        </h2>
+
+
+        <p>
+
+            A fast, motivating snapshot of your habits, streaks, and progress.
+
+        </p>
+
+    </div>
+
+
+    <div class="hero-visual">
+
+        <div class="hero-chart">
+
+            <div class="hero-bar hero-bar-1"><span></span></div>
+
+            <div class="hero-bar hero-bar-2"><span></span></div>
+
+            <div class="hero-bar hero-bar-3"><span></span></div>
+
+            <div class="hero-tag">
+
+                <strong>+24%</strong>
+
+                <span>Habit consistency</span>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+</div>
+
+
+<!-- STATS -->
+
+<div class="stats-grid">
+
+
+    <div class="stat-card">
+
+
+        <span class="stat-title">
+
+            NUMBER OF HABITS
+
+        </span>
+
+
+        <h2 id="habitCount">
+
+            0
+
+        </h2>
+
+
+        <p>
+
+            Active habits
+
+        </p>
+
+
+    </div>
+
+
+
+    <div class="stat-card streak-card">
+
+
+        <span class="stat-title">
+
+            TODAY'S STREAK
+
+        </span>
+
+
+        <div class="streak-badge">
+
+            <span class="streak-icon">🔥</span>
+
+            <h2 id="dailyCount">
+
+                0
+
+            </h2>
+
+        </div>
+
+
+        <p>
+
+            Keep the rhythm alive
+
+        </p>
+
+
+    </div>
+
+
+
+    <div class="stat-card progress-card">
+
+
+        <span class="stat-title">
+
+            TODAY'S PROGRESS
+
+        </span>
+
+
+        <div class="progress-content">
+
+
+            <strong
+                id="progressPercent"
+            >
+
+                0%
+
+            </strong>
+
+
+            <div class="progress-bar">
+
+
+                <span
+                    id="progressBar"
+                ></span>
+
+
+            </div>
+
+
+        </div>
+
+
+        <p id="progressStatus">
+
+            0 of 0 habits done today
+
+        </p>
+
+
+    </div>
+
+
+</div>
+
+
+
+<!-- MAIN DASHBOARD GRID -->
+
+<div class="main-grid">
+
+
+<!-- HABIT TRACKER -->
+
+<div class="panel habit-panel">
+
+
+    <div class="panel-header">
+
+
+        <div>
+
+
+            <span class="eyebrow">
+
+                CONSISTENCY
+
+            </span>
+
+
+            <h2>
+
+                Habit Tracker
+
+            </h2>
+
+
+        </div>
+
+
+
+        <button
+            type="button"
+            id="jumpTodayBtn"
+            class="secondary-button today-button"
+        >
+
+            Jump to Today
+
+        </button>
+
+        <button
+            type="button"
+            id="resetBtn"
+            class="secondary-button"
+        >
+
+            Reset Month
+
+        </button>
+
+
+    </div>
+
+
+
+    <div class="table-wrapper">
+
+
+        <table class="habit-table">
+
+
+            <thead
+                id="calendarHead"
+            >
+
+            </thead>
+
+
+            <tbody
+                id="habitBody"
+            >
+
+            </tbody>
+
+
+        </table>
+
+
+    </div>
+
+
+</div>
+
+
+
+<!-- GOAL ANALYSIS -->
+
+<div class="panel analysis-panel">
+
+
+    <div class="panel-header">
+
+
+        <div>
+
+
+            <span class="eyebrow">
+
+                ANALYSIS
+
+            </span>
+
+
+            <h2>
+
+                Goal vs Progress
+
+            </h2>
+
+
+        </div>
+
+
+    </div>
+
+
+
+    <div
+        id="goalAnalysis"
+        class="goal-analysis"
+    >
+
+    </div>
+
+
+</div>
+
+
+</div>
+
+
+
+<!-- BOTTOM GRID -->
+
+<div class="bottom-grid">
+
+
+<!-- DAILY COMPLETION -->
+
+<div class="panel">
+
+
+    <div class="panel-header">
+
+
+        <div>
+
+
+            <span class="eyebrow">
+
+                PERFORMANCE
+
+            </span>
+
+
+            <h2>
+
+                Monthly Completion
+
+            </h2>
+
+
+        </div>
+
+
+    </div>
+
+
+
+    <div
+        id="completionChart"
+        class="completion-chart"
+    >
+
+        <div class="chart-shell">
+
+            <div class="chart-metrics">
+
+                <div>
+
+                    <span class="metric-label">Peak</span>
+
+                    <strong>40%</strong>
+
+                </div>
+
+                <div>
+
+                    <span class="metric-label">Overall</span>
+
+                    <strong>1%</strong>
+
+                </div>
+
+            </div>
+
+            <svg
+                class="chart-svg"
+                viewBox="0 0 100 100"
+                preserveAspectRatio="none"
+            >
+
+                <defs>
+
+                    <linearGradient id="completionGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+
+                        <stop offset="0%" stop-color="#4f8dff" stop-opacity="0.26"></stop>
+
+                        <stop offset="100%" stop-color="#1761df" stop-opacity="0.05"></stop>
+
+                    </linearGradient>
+
+                    <linearGradient id="completionStroke" x1="0%" y1="0%" x2="100%" y2="0%">
+
+                        <stop offset="0%" stop-color="#1761df"></stop>
+
+                        <stop offset="100%" stop-color="#6ba4ff"></stop>
+
+                    </linearGradient>
+
+                    <pattern id="chartTexture" width="8" height="8" patternUnits="userSpaceOnUse">
+
+                        <path d="M 0 8 L 8 0" stroke="rgba(255,255,255,0.28)" stroke-width="0.35"></path>
+
+                        <path d="M 0 0 L 8 8" stroke="rgba(255,255,255,0.15)" stroke-width="0.25"></path>
+
+                    </pattern>
+
+                </defs>
+
+                <rect x="0" y="0" width="100" height="100" rx="4" fill="url(#chartTexture)"></rect>
+
+                <line class="grid-line" x1="10" y1="90" x2="90" y2="90"></line>
+
+                <line class="grid-line" x1="10" y1="70" x2="90" y2="70"></line>
+
+                <line class="grid-line" x1="10" y1="50" x2="90" y2="50"></line>
+
+                <line class="grid-line" x1="10" y1="30" x2="90" y2="30"></line>
+
+                <path d="M 10,90 L 10,58 L 12.666666666666666,90 L 15.333333333333332,90 L 18,90 L 20.666666666666664,90 L 23.333333333333332,90 L 26,90 L 28.666666666666664,90 L 31.333333333333332,90 L 34,90 L 36.666666666666664,90 L 39.33333333333333,90 L 42,90 L 44.666666666666664,90 L 47.33333333333333,90 L 50,90 L 52.666666666666664,90 L 55.33333333333333,90 L 58,90 L 60.666666666666664,90 L 63.33333333333333,90 L 66,90 L 68.66666666666666,90 L 71.33333333333333,90 L 74,90 L 76.66666666666666,90 L 79.33333333333333,90 L 82,90 L 84.66666666666666,90 L 87.33333333333333,90 L 90,90 L 90,90 Z" fill="url(#completionGradient)"></path>
+
+                <path d="M 10,58 L 12.666666666666666,90 L 15.333333333333332,90 L 18,90 L 20.666666666666664,90 L 23.333333333333332,90 L 26,90 L 28.666666666666664,90 L 31.333333333333332,90 L 34,90 L 36.666666666666664,90 L 39.33333333333333,90 L 42,90 L 44.666666666666664,90 L 47.33333333333333,90 L 50,90 L 52.666666666666664,90 L 55.33333333333333,90 L 58,90 L 60.666666666666664,90 L 63.33333333333333,90 L 66,90 L 68.66666666666666,90 L 71.33333333333333,90 L 74,90 L 76.66666666666666,90 L 79.33333333333333,90 L 82,90 L 84.66666666666666,90 L 87.33333333333333,90 L 90,90" fill="none" stroke="url(#completionStroke)" stroke-width="0.45" stroke-linecap="round" stroke-opacity="0.9"></path>
+
+                <circle class="chart-point" cx="10" cy="58" r="1.2" fill="#ffffff" stroke="#4f8dff" stroke-width="0.7"></circle>
+
+                <circle class="chart-point" cx="50" cy="90" r="1.2" fill="#ffffff" stroke="#4f8dff" stroke-width="0.7"></circle>
+
+                <circle class="chart-point" cx="90" cy="90" r="1.2" fill="#ffffff" stroke="#4f8dff" stroke-width="0.7"></circle>
+
+            </svg>
+
+            <div class="chart-labels">
+
+                <span>1</span>
+
+                <span>16</span>
+
+                <span>31</span>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+</div>
+
+
+
+<!-- DAILY DIARY -->
+
+<div class="panel diary-panel">
+
+
+    <div class="panel-header">
+
+        <button
+            type="button"
+            id="diaryLockBtn"
+            class="diary-lock-btn"
+            aria-pressed="false"
+        >
+
+            🔓 Unlock
+
+        </button>
+
+        <div>
+
+            <span class="eyebrow">
+
+                DAILY DIARY
+
+            </span>
+
+            <h2>
+
+                Reminder Journal
+
+            </h2>
+
+        </div>
+
+    </div>
+
+
+    <textarea
+        id="reminderInput"
+        placeholder="Write your daily diary reminder..."
+        rows="10"
+    ></textarea>
+
+    <div class="diary-actions">
+
+        <button
+            type="button"
+            id="reminderClearBtn"
+            class="reminder-clear-btn"
+        >
+
+            Clear
+
+        </button>
+
+        <span class="diary-status-text">
+
+            Contents refresh daily unless locked.
+
+        </span>
+
+    </div>
+
+</div>
+
+
+</div>
+
+
+</section>
+
+
+
+<!-- =====================================
+     HABITS PAGE
+===================================== -->
+
+<section
+    id="habits"
+    class="section"
+>
+
+
+<div class="page-card">
+
+
+    <span class="eyebrow">
+
+        YOUR SYSTEM
+
+    </span>
+
+
+    <h2>
+
+        Build Your Habits
+
+    </h2>
+
+
+    <p>
+
+        Add, edit, reorder and track
+        the habits that matter.
+
+    </p>
+
+
+
+    <!-- ADD HABIT -->
+
+    <div class="add-habit">
+
+
+        <input
+            id="newHabitInput"
+            type="text"
+            maxlength="35"
+            autocomplete="off"
+            placeholder="Example: Meditation"
+        >
+
+
+        <button
+            type="button"
+            id="addHabitBtn"
+            class="primary-button"
+        >
+
+            Add Habit
+
+        </button>
+
+
+    </div>
+
+
+
+    <!-- HABIT MANAGEMENT -->
+
+    <div
+        id="habitManageList"
+        class="manage-list"
+    >
+
+    </div>
+
+
+</div>
+
+
+</section>
+
+
+
+<!-- =====================================
+     GOALS PAGE
+===================================== -->
+
+<section
+    id="goals"
+    class="section"
+>
+
+
+<div class="page-card">
+
+
+    <span class="eyebrow">
+
+        LONG-TERM PROGRESS
+
+    </span>
+
+
+    <h2>
+
+        Goals
+
+    </h2>
+
+
+    <p>
+
+        Track your monthly habit goals.
+
+    </p>
+
+
+
+    <div
+        id="goalPageList"
+        class="goal-page-list"
+    >
+
+    </div>
+
+
+</div>
+
+
+</section>
+
+
+
+<!-- =====================================
+     ANALYTICS PAGE
+===================================== -->
+
+<section
+    id="analytics"
+    class="section"
+>
+
+
+<div class="page-card">
+
+
+    <span class="eyebrow">
+
+        YOUR DATA
+
+    </span>
+
+
+    <h2>
+
+        Analytics
+
+    </h2>
+
+
+    <p>
+
+        View your progress and consistency.
+
+    </p>
+
+
+
+    <!-- JS WILL ADD:
+         Summary
+         Doughnut Chart
+         Daily Line Chart
+         Habit Bar Chart
+    -->
+
+    <div
+        id="analyticsSummary"
+        class="analytics-summary"
+    >
+
+    </div>
+
+
+</div>
+
+
+</section>
+
+
+</main>
+
+
+</div>
+
+
+
+<!-- =====================================
+     FOOTER
+===================================== -->
+
+<footer class="lt-footer">
+
+    © LT Series • LifeTrack
+
+</footer>
+
+
+
+<!-- =====================================
+     DASHBOARD JAVASCRIPT
+     IMPORTANT:
+     ONLY ONE SCRIPT TAG
+===================================== -->
+
+<script
+    src="dashboard.js"
+></script>
+
+
+</body>
+
+</html>

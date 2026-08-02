@@ -1,0 +1,1201 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>LifeTrack | Login</title>
+
+    <style>
+
+        @keyframes backgroundShift {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 100% 50%; }
+        }
+
+        @keyframes drift {
+            0% { transform: translate3d(0, 0, 0) rotate(0deg); }
+            50% { transform: translate3d(12px, -10px, 0) rotate(2deg); }
+            100% { transform: translate3d(0, 0, 0) rotate(0deg); }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-8px); }
+        }
+
+        @keyframes pulseGlow {
+            0%, 100% { box-shadow: 0 0 0 rgba(255,255,255,0.0); }
+            50% { box-shadow: 0 0 22px rgba(255,255,255,0.16); }
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+
+        body {
+
+            min-height: 100vh;
+
+            font-family:
+                Arial,
+                Helvetica,
+                sans-serif;
+
+            background:
+                #eef4ff;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            padding: 15px;
+
+            color:
+                #172033;
+
+        }
+
+
+        /* =========================
+           MAIN LOGIN BOX
+        ========================== */
+
+        .login-container {
+
+            width: 100%;
+
+            max-width: auto;
+
+            min-height: 620px;
+
+            display: grid;
+
+            grid-template-columns:
+                1fr 1fr;
+
+            overflow: hidden;
+
+            background:
+                white;
+
+            border-radius:
+                28px;
+
+            box-shadow:
+                0 25px 70px
+                rgba(
+                    30,
+                    70,
+                    140,
+                    0.18
+                );
+
+        }
+
+
+        /* =========================
+           LEFT BLUE PRESENTATION
+        ========================== */
+
+        .presentation {
+
+            position: relative;
+
+            overflow: hidden;
+
+            padding:
+                55px;
+
+            color:
+                white;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    #1558d6,
+                    #2877f5,
+                    #2f7dff
+                );
+            background-size: 220% 220%;
+            animation: backgroundShift 14s ease-in-out infinite alternate;
+
+            display: flex;
+
+            flex-direction:
+                column;
+
+            justify-content:
+                space-between;
+
+        }
+
+        .presentation .graphic-grid {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            background-image:
+                linear-gradient(rgba(255,255,255,0.10) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.10) 1px, transparent 1px);
+            background-size: 32px 32px;
+            mask-image: linear-gradient(to bottom, rgba(0,0,0,0.9), transparent 90%);
+            opacity: 0.35;
+            animation: drift 8s ease-in-out infinite;
+        }
+
+
+        /* Background circles */
+
+        .presentation::before {
+
+            content: "";
+
+            position: absolute;
+
+            width: 330px;
+
+            height: 330px;
+
+            border-radius:
+                50%;
+
+            background:
+                rgba(
+                    255,
+                    255,
+                    255,
+                    0.08
+                );
+
+            top:
+                -140px;
+
+            right:
+                -130px;
+
+            animation: float 7s ease-in-out infinite, pulseGlow 6s ease-in-out infinite;
+
+        }
+
+
+        .presentation::after {
+
+            content: "";
+
+            position: absolute;
+
+            width: 260px;
+
+            height: 260px;
+
+            border-radius:
+                50%;
+
+            border:
+                45px solid
+                rgba(
+                    255,
+                    255,
+                    255,
+                    0.06
+                );
+
+            bottom:
+                -130px;
+
+            left:
+                -110px;
+
+            animation: drift 9s ease-in-out infinite reverse;
+
+        }
+
+
+        /* =========================
+           LT LOGO
+        ========================== */
+
+        .brand {
+
+            position: relative;
+
+            z-index: 2;
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 14px;
+
+        }
+
+
+        .logo-box {
+
+            width: 54px;
+
+            height: 54px;
+
+            border-radius:
+                15px;
+
+            background:
+                white;
+
+            color:
+                #1761df;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            font-size:
+                21px;
+
+            font-weight:
+                900;
+
+            box-shadow:
+                0 10px 25px
+                rgba(
+                    0,
+                    0,
+                    0,
+                    0.15
+                );
+
+            animation: float 4s ease-in-out infinite;
+
+        }
+
+
+        .brand-text h2 {
+
+            font-size:
+                24px;
+
+            letter-spacing:
+                -0.5px;
+
+        }
+
+
+        .brand-text p {
+
+            margin-top:
+                4px;
+
+            font-size:
+                13px;
+
+            opacity:
+                0.8;
+
+        }
+
+
+        /* =========================
+           PRESENTATION CONTENT
+        ========================== */
+
+        .presentation-content {
+
+            position: relative;
+
+            z-index: 2;
+
+            max-width:
+                390px;
+
+        }
+
+
+        .presentation-content h1 {
+
+            font-size:
+                48px;
+
+            line-height:
+                1.1;
+
+            letter-spacing:
+                -1.8px;
+
+            margin-bottom:
+                22px;
+
+        }
+
+
+        .presentation-content p {
+
+            font-size:
+                17px;
+
+            line-height:
+                1.75;
+
+            opacity:
+                0.88;
+
+        }
+
+
+        .feature-list {
+
+            margin-top:
+                35px;
+
+            display: grid;
+
+            gap: 14px;
+
+        }
+
+
+        .feature {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 12px;
+
+            font-size:
+                14px;
+
+            font-weight:
+                600;
+
+        }
+
+
+        .feature-icon {
+
+            width: 32px;
+
+            height: 32px;
+
+            border-radius:
+                10px;
+
+            background:
+                rgba(
+                    255,
+                    255,
+                    255,
+                    0.16
+                );
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            animation: pulseGlow 3s ease-in-out infinite;
+
+        }
+
+
+        /* =========================
+           LT SERIES
+        ========================== */
+
+        .lt-series {
+
+            position: relative;
+
+            z-index: 2;
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 10px;
+
+            font-size:
+                11px;
+
+            font-weight:
+                800;
+
+            letter-spacing:
+                2px;
+
+            opacity:
+                0.72;
+
+        }
+
+
+        .lt-line {
+
+            width: 35px;
+
+            height: 1px;
+
+            background:
+                rgba(
+                    255,
+                    255,
+                    255,
+                    0.55
+                );
+
+        }
+
+
+        /* =========================
+           RIGHT WHITE LOGIN
+        ========================== */
+
+        .login-panel {
+
+            padding:
+                55px;
+
+            background:
+                #ffffff;
+
+            display: flex;
+
+            flex-direction:
+                column;
+
+            justify-content:
+                center;
+
+        }
+
+
+        /* Blue LT logo only */
+
+        .login-logo {
+
+            width: 58px;
+
+            height: 58px;
+
+            border-radius:
+                17px;
+
+            background:
+                #1761df;
+
+            color:
+                white;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            font-size:
+                22px;
+
+            font-weight:
+                900;
+
+            margin-bottom:
+                30px;
+
+            box-shadow:
+                0 12px 25px
+                rgba(
+                    23,
+                    97,
+                    223,
+                    0.22
+                );
+
+            animation: float 4.5s ease-in-out infinite;
+
+        }
+
+
+        .login-panel h2 {
+
+            font-size:
+                34px;
+
+            letter-spacing:
+                -1px;
+
+            margin-bottom:
+                10px;
+
+        }
+
+
+        .login-panel > p {
+
+            color:
+                #788296;
+
+            line-height:
+                1.6;
+
+            font-size:
+                14px;
+
+            margin-bottom:
+                32px;
+
+        }
+
+
+        /* =========================
+           USER INPUT
+        ========================== */
+
+        .input-label {
+
+            display: block;
+
+            font-size:
+                13px;
+
+            font-weight:
+                750;
+
+            margin-bottom:
+                10px;
+
+            color:
+                #2a3447;
+
+        }
+
+
+        .input-box {
+
+            width: 100%;
+
+            height: 57px;
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 12px;
+
+            padding:
+                0 17px;
+
+            border:
+                2px solid
+                #e2e7f0;
+
+            border-radius:
+                15px;
+
+            background:
+                #f8faff;
+
+            transition:
+                0.25s;
+
+        }
+
+
+        .input-box:focus-within {
+
+            border-color:
+                #1761df;
+
+            background:
+                white;
+
+            box-shadow:
+                0 0 0 4px
+                rgba(
+                    23,
+                    97,
+                    223,
+                    0.09
+                );
+
+        }
+
+
+        /* Emoji only here */
+
+        .user-emoji {
+
+            font-size:
+                20px;
+
+        }
+
+
+        #username {
+
+            width: 100%;
+
+            border:
+                none;
+
+            outline:
+                none;
+
+            background:
+                transparent;
+
+            color:
+                #1b2435;
+
+            font-size:
+                15px;
+
+        }
+
+
+        #username::placeholder {
+
+            color:
+                #a2aab8;
+
+        }
+
+
+        /* =========================
+           LOGIN BUTTON
+        ========================== */
+
+        #loginButton {
+
+            width: 100%;
+
+            height: 56px;
+
+            border:
+                none;
+
+            border-radius:
+                15px;
+
+            margin-top:
+                22px;
+
+            background:
+                #1761df;
+
+            color:
+                white;
+
+            font-size:
+                15px;
+
+            font-weight:
+                800;
+
+            cursor:
+                pointer;
+
+            transition:
+                0.25s;
+
+            box-shadow:
+                0 12px 24px
+                rgba(
+                    23,
+                    97,
+                    223,
+                    0.22
+                );
+
+        }
+
+
+        #loginButton:hover {
+
+            transform:
+                translateY(-2px);
+
+            background:
+                #0f51c8;
+
+        }
+
+
+        #loginButton:active {
+
+            transform:
+                scale(0.98);
+
+        }
+
+
+        .login-note {
+
+            margin-top:
+                25px;
+
+            text-align:
+                center;
+
+            color:
+                #98a1b0;
+
+            font-size:
+                12px;
+
+            line-height:
+                1.6;
+
+        }
+
+
+        /* =========================
+           MOBILE
+        ========================== */
+
+        @media (
+            max-width: 800px
+        ) {
+
+            body {
+
+                padding:
+                    15px;
+
+                align-items:
+                    flex-start;
+
+            }
+
+
+            .login-container {
+
+                grid-template-columns:
+                    1fr;
+
+                min-height:
+                    auto;
+
+            }
+
+
+            .presentation {
+
+                min-height:
+                    430px;
+
+                padding:
+                    35px;
+
+            }
+
+
+            .presentation-content h1 {
+
+                font-size:
+                    38px;
+
+            }
+
+
+            .login-panel {
+
+                padding:
+                    40px 28px;
+
+            }
+
+        }
+
+
+        @media (
+            max-width: 450px
+        ) {
+
+            .presentation {
+
+                min-height:
+                    390px;
+
+                padding:
+                    27px;
+
+            }
+
+
+            .presentation-content h1 {
+
+                font-size:
+                    32px;
+
+            }
+
+
+            .feature-list {
+
+                gap:
+                    10px;
+
+            }
+
+
+            .login-panel {
+
+                padding:
+                    35px 22px;
+
+            }
+
+
+            .login-panel h2 {
+
+                font-size:
+                    29px;
+
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<div class="login-container">
+
+
+    <!-- =========================
+         LEFT BLUE SIDE
+    ========================== -->
+
+    <section class="presentation">
+
+        <div class="graphic-grid"></div>
+
+        <div class="brand">
+
+
+            <div class="logo-box">
+
+                LT
+
+            </div>
+
+
+            <div class="brand-text">
+
+                <h2>
+                    LifeTrack
+                </h2>
+
+                <p>
+                    Build your life.
+                </p>
+
+            </div>
+
+
+        </div>
+
+
+
+        <div class="presentation-content">
+
+
+            <h1>
+
+                Build better.<br>
+
+                Live better.
+
+            </h1>
+
+
+            <p>
+
+                Track your habits, build consistency,
+                achieve your goals and improve every day.
+
+            </p>
+
+
+            <div class="feature-list">
+
+
+                <div class="feature">
+
+                    <div class="feature-icon">
+
+                        ✓
+
+                    </div>
+
+                    Build powerful habits
+
+                </div>
+
+
+                <div class="feature">
+
+                    <div class="feature-icon">
+
+                        📈
+
+                    </div>
+
+                    Measure your progress
+
+                </div>
+
+
+                <div class="feature">
+
+                    <div class="feature-icon">
+
+                        🔥
+
+                    </div>
+
+                    Keep your streak alive
+
+                </div>
+
+
+            </div>
+
+
+        </div>
+
+
+
+        <div class="lt-series">
+
+
+            <span class="lt-line"></span>
+
+            LT SERIES
+
+        </div>
+
+
+    </section>
+
+
+
+    <!-- =========================
+         RIGHT WHITE LOGIN
+    ========================== -->
+
+    <section class="login-panel">
+
+
+        <!-- Blue LT logo -->
+
+        <div class="login-logo">
+
+            LT
+
+        </div>
+
+
+        <h2>
+
+            Welcome back
+
+        </h2>
+
+
+        <p>
+
+            Enter your name to continue
+            your LifeTrack journey.
+
+        </p>
+
+
+
+        <label
+            class="input-label"
+            for="username"
+        >
+
+            Your name
+
+        </label>
+
+
+
+        <div class="input-box">
+
+
+            <!-- Emoji only in name section -->
+
+            <span class="user-emoji">
+
+                👤
+
+            </span>
+
+
+            <input
+
+                id="username"
+
+                type="text"
+
+                placeholder="Enter your name"
+
+                autocomplete="name"
+
+                maxlength="25"
+
+            >
+
+
+        </div>
+
+
+
+        <button id="loginButton">
+
+            Enter LifeTrack →
+
+        </button>
+
+
+
+        <div class="login-note">
+
+            Your progress is saved
+            securely on this device.
+
+        </div>
+
+
+    </section>
+
+
+</div>
+
+
+
+<script>
+
+"use strict";
+
+
+const usernameInput =
+
+    document.getElementById(
+        "username"
+    );
+
+
+const loginButton =
+
+    document.getElementById(
+        "loginButton"
+    );
+
+
+function login() {
+
+
+    const username =
+
+        usernameInput.value
+        .trim();
+
+
+    if (
+        username.length === 0
+    ) {
+
+        usernameInput.focus();
+
+        usernameInput.placeholder =
+
+            "Please enter your name";
+
+        return;
+
+    }
+
+
+    localStorage.setItem(
+
+        "lifetrack_username",
+
+        username
+
+    );
+
+
+    window.location.href =
+
+        "dashboard.html";
+
+}
+
+
+loginButton.addEventListener(
+
+    "click",
+
+    login
+
+);
+
+
+usernameInput.addEventListener(
+
+    "keydown",
+
+    function(event) {
+
+        if (
+            event.key === "Enter"
+        ) {
+
+            login();
+
+        }
+
+    }
+
+);
+
+
+window.addEventListener(
+
+    "load",
+
+    function() {
+
+        usernameInput.focus();
+
+    }
+
+);
+
+</script>
+
+
+</body>
+
+</html>
